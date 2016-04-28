@@ -71,6 +71,27 @@ class PhpRenderer
     }
 
     /**
+     * Render a template
+     *
+     * $data cannot contain template as a key
+     *
+     * throws RuntimeException if $templatePath . $template does not exist
+     *
+     * @param ResponseInterface $response
+     * @param string             $template
+     * @param array              $data
+     *
+     * @return raw data rendered thorugh template
+     *
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
+     */
+ 	public function render_raw(ResponseInterface $response, $template, array $data = [])
+    {
+        return $this->fetch($template, $data);
+    }
+    
+    /**
      * Get the attributes for the renderer
      *
      * @return array
